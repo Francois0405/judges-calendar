@@ -1,4 +1,4 @@
 package model;
 
-public class year {
+public class Year {
 }
