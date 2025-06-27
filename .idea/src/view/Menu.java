@@ -125,5 +125,5 @@ public class Menu<TEnum> {
         }
 
         return maxLen;
-    }
+    }//
 }
