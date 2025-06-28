@@ -1,6 +1,7 @@
 package view;
 import model.*;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -26,7 +27,7 @@ public class ViewCalendar {
 
     // Declarem descripcions personalitzades per a les opcions del menú principal
     static private String[] descMenuPrincipal={"Add employee",
-            "Manage schedule",
+            "Add holidays to employees",
             "Create replacement",
             "Save file",
             "Load file",
@@ -73,16 +74,28 @@ public class ViewCalendar {
                     break;
                 case MANAGE_SCHEDULE:
                     System.out.println("MANAGE_SCHEDULE");
-
+                    calendar.showEmployes();
+                    System.out.println("Especify the name of the employee the numb jutge and the day that is holiday for that person");
+                    calendar.addHolidays(sc.nextLine(),sc.nextInt(),sc.nextInt());
                     break;
                 case CREATE_REPLACEMENT:
                     System.out.println("CREATE_REPLACEMENT");
                     break;
                 case SAVE_FILE:
                     System.out.println("SAVE_FILE");
+                    try{
+                        calendar.saveCalendar("Schedule.txt");
+                    }catch(CalendarException e){
+                        System.out.println(e);
+                    }
                     break;
                 case LOAD_FILE:
                     System.out.println("LOAD_FILE");
+                    try {
+                        calendar.loadCalendar("Schedule.txt");
+                    }catch (CalendarException e){
+                        System.out.println(e);
+                    }
                     break;
                 case EXIT:
                     System.out.println("EXIT");
