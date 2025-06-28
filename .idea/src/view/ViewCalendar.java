@@ -1,4 +1,5 @@
 package view;
+import model.*;
 
 import java.util.Scanner;
 
@@ -6,11 +7,22 @@ import java.util.Scanner;
  * Exemple d'utilització de la classe Menu.
  *
  */
-public class ExampleMenu {
+public class ViewCalendar {
+    private Calendar calendar;
 
     // Declarem les opcions per a referir-se a les opcions del menú.
-    static private enum OpcionsMenuPrincipal {ADD_EMPLOYEE,MANAGE_SCHEDULE,CREATE_REPLACEMENT,SAVE_FILE,LOAD_FILE,EXIT};
-    static enum OpcionsSubmenu1 {MENU_S1_OPCIO1,MENU_S1_OPCIO2,MENU_S1_SORTIR};
+    static private enum OpcionsMenuPrincipal {ADD_EMPLOYEE,
+        MANAGE_SCHEDULE,
+        CREATE_REPLACEMENT,
+        SAVE_FILE,
+        LOAD_FILE,
+        EXIT};
+
+    /*static enum OpcionsSubmenu1 {MENU_S1_OPCIO1,
+        MENU_S1_OPCIO2,
+        MENU_S1_SORTIR};
+
+     */
 
     // Declarem descripcions personalitzades per a les opcions del menú principal
     static private String[] descMenuPrincipal={"Add employee",
@@ -21,10 +33,11 @@ public class ExampleMenu {
             "Exit"};
 
     // Declarem descripcions personalitzades per a les opcions del menú secundari
-    static private String[] descMenu2={"Primera Opció del menú se+cundari",
-            "Segona Opció del menú secundari",
-            "Menú anterior"};
+    //static private String[] descMenu2={""};
 
+    public ViewCalendar() {
+        this.calendar = new Calendar();
+    }
     /**
      * Fitxer principal. Crea el menú principal i un menú secundari
      * @param args the command line arguments
@@ -51,15 +64,16 @@ public class ExampleMenu {
             // Demanem una opcio
             opcio=menu.getOpcio(sc);
 
-            // Fem les accions necessÃ ries
             switch(opcio) {
                 case ADD_EMPLOYEE:
-                    // Mostrem un missatge indicant que s'ha triat aquesta opciÃ³
+
                     System.out.println("ADD_EMPLOYEE");
+                    System.out.println("name,number of jutge");
+                    calendar.addEmployee(sc.nextLine(),sc.nextInt(),0);
                     break;
                 case MANAGE_SCHEDULE:
-                    // Mostrem un missatge indicant que s'ha triat aquesta opciÃ³
                     System.out.println("MANAGE_SCHEDULE");
+
                     break;
                 case CREATE_REPLACEMENT:
                     System.out.println("CREATE_REPLACEMENT");
