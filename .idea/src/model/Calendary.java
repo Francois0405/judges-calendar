@@ -18,7 +18,15 @@ public class Calendary implements Serializable {
 
     //--------------------------------------------EMPLOYEES ONLY-------------------------------------------------------------------
     //Add the new employee
-    public void addEmployee(String name, int numbJutj, int workingPts) {
+    public void addEmployee(String name, int numbJutj, int workingPts) throws CalendarException {
+        System.out.println("Employees:");
+        //verify that the numbJutj dosen't repeat
+        for (Employee emp: employeeList){
+            if(emp.getNumbJutj()==numbJutj){
+                throw new CalendarException("the court number "+numbJutj+" already exists");
+            }
+        }
+
         Employee newEmp = new Employee(name, numbJutj, workingPts);
         employeeList.add(newEmp);
         System.out.println("New employee added succesfuly " + newEmp);
@@ -26,9 +34,6 @@ public class Calendary implements Serializable {
 
     public void showEmployes(){
         System.out.println("Employees:");
-        if (employeeList.size() < 0) {
-            System.out.println("No employees");
-        }
         for (Employee emp: employeeList){
             System.out.println(emp+"\n");
         }
@@ -40,6 +45,13 @@ public class Calendary implements Serializable {
             }
         }
 
+    }
+
+
+    //--------------------------------------------Replacements-------------------------------------------------------------------
+
+    public void createReplacement(){
+        //Whith the holidays of each person the system will select the employees whith less Workingpts to occupy the place
     }
 
 

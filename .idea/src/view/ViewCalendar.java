@@ -67,10 +67,13 @@ public class ViewCalendar {
 
             switch(opcio) {
                 case ADD_EMPLOYEE:
-
                     System.out.println("ADD_EMPLOYEE");
-                    System.out.println("name,number of jutge");
-                    calendar.addEmployee(sc.nextLine(),sc.nextInt(),0);
+                    System.out.println("name and number of court");
+                    try{
+                        calendar.addEmployee(sc.nextLine(),sc.nextInt(),0);
+                    }catch(CalendarException e){
+                        System.out.println(e);
+                    }
                     break;
                 case MANAGE_SCHEDULE:
                     System.out.println("MANAGE_SCHEDULE");
@@ -80,6 +83,7 @@ public class ViewCalendar {
                     break;
                 case CREATE_REPLACEMENT:
                     System.out.println("CREATE_REPLACEMENT");
+                    //Para cada individuo con fiesta buscara una sustitución de otro juzgado
                     break;
                 case SAVE_FILE:
                     System.out.println("SAVE_FILE");
