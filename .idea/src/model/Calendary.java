@@ -1,10 +1,11 @@
 package model;
 import view.CalendarException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calendar {
+public class Calendary implements Serializable {
     private int year;
     private int month;
     private int day;
@@ -24,6 +25,10 @@ public class Calendar {
     }
 
     public void showEmployes(){
+        System.out.println("Employees:");
+        if (employeeList.size() < 0) {
+            System.out.println("No employees");
+        }
         for (Employee emp: employeeList){
             System.out.println(emp+"\n");
         }
@@ -58,12 +63,12 @@ public class Calendar {
 
     // ---------------------------------- Load file ----------------------------------
 
-    public static Calendar loadCalendar(String camiOrigen) throws CalendarException {
+    public static Calendary loadCalendar(String camiOrigen) throws CalendarException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(camiOrigen))) {
             Object obj = ois.readObject();
-            if (obj instanceof Calendar) {
+            if (obj instanceof Calendary) {
                 System.out.println("Calendary loaded succesfuly at " + camiOrigen);
-                return (Calendar) obj;
+                return (Calendary) obj;
             } else {
                 throw new CalendarException("The file has not an object type Calendary.");
             }
@@ -71,4 +76,6 @@ public class Calendar {
             throw new CalendarException("Error loading the calendary: " + e.getMessage());
         }
     }
+
+
 }

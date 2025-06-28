@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  */
 public class ViewCalendar {
-    private Calendar calendar;
+    private Calendary calendar;
 
     // Declarem les opcions per a referir-se a les opcions del menú.
     static private enum OpcionsMenuPrincipal {ADD_EMPLOYEE,
@@ -37,7 +37,7 @@ public class ViewCalendar {
     //static private String[] descMenu2={""};
 
     public ViewCalendar() {
-        this.calendar = new Calendar();
+        this.calendar = new Calendary();
     }
     /**
      * Fitxer principal. Crea el menú principal i un menú secundari

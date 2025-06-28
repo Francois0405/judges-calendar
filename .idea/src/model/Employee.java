@@ -1,6 +1,8 @@
 package model;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee extends Calendary implements Serializable {
     String name;
     int numbJutj;
     int workingPts;
